@@ -75,7 +75,7 @@ def message_text(event):
     message = text=event.message.text
     if '股票' in message:
         buttons_template_message = TemplateSendMessage(
-            alt_text = '股票資訊'
+            alt_text = '股票資訊',
             template = CarouselTemplate(
                 columns = [
                     CarouselColumn(
