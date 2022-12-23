@@ -75,22 +75,25 @@ def message_text(event):
     message = text=event.message.text
     if '股票' in message:
         buttons_template_message = TemplateSendMessage(
-            column = [
-                CarouselColumn(
-                    thumbnail_image_url = "",
-                    titlw = message + '股票資訊',
-                    actions = [
-                        MessageAction(
-                            label = 'xxx' + ' 個股資訊',
-                            text = '個股資訊 ' + 'xxx'
-                        ),
-                        MessageAction(
-                            label = 'xxx' + ' 個股新聞',
-                            text = '個股新聞 ' + 'xxx'
-                        ),
-                    ]
-                )
-            ]
+            alt_text = '股票資訊'
+            template=CarouselTemplate(
+                column = [
+                    CarouselColumn(
+                        #thumbnail_image_url = "",
+                        title = message + '股票資訊',
+                        actions = [
+                            MessageAction(
+                                label = 'xxx' + ' 個股資訊',
+                                text = '個股資訊 ' + 'xxx'
+                            ),
+                            MessageAction(
+                                label = 'xxx' + ' 個股新聞',
+                                text = '個股新聞 ' + 'xxx'
+                            )
+                        ]
+                    )
+                ]
+            )
         )
         line_bot_api.reply_message(event.reply_token, buttons_template_message)
     else:
