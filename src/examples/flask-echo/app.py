@@ -78,55 +78,160 @@ def message_text(event):
 
         buttons_template_message = TemplateSendMessage(
             alt_text = '股票資訊',
-            template = CarouselTemplate(
-                columns = [
-                    CarouselColumn(
-                        thumbnail_image_url = 'https://miro.medium.com/max/1838/1*xRW05xCHmq7r8OOmFzlosw.png',
-                        title = message + '股票資訊',
-                        text = '請點選請查詢的股票資訊',
-                        actions = [
-                            MessageAction(
-                                label = 'xxx' + ' 個股資訊',
-                                text = '個股資訊 ' + 'xxx'
-                            ),
-                            MessageAction(
-                                label = 'xxx' + ' 個股新聞',
-                                text = '個股新聞 ' + 'xxx'
-                            )
-                        ]
-                    ),
-                    CarouselColumn(
-                        thumbnail_image_url = 'https://miro.medium.com/max/1838/1*xRW05xCHmq7r8OOmFzlosw.png',
-                        title = message + '股票資訊',
-                        text = '請點選請查詢的股票資訊',
-                        actions = [
-                            MessageAction(
-                                label = 'xxx' + ' 最新分鐘圖',
-                                text = '最新分鐘圖 ' + 'xxx'
-                            ),
-                            MessageAction(
-                                label = 'xxx' + ' 日線圖',
-                                text = '日線圖 ' + 'xxx'
-                            )
-                        ]
-                    ),
-                    CarouselColumn(
-                        thumbnail_image_url = 'https://miro.medium.com/max/1838/1*xRW05xCHmq7r8OOmFzlosw.png',
-                        title = message + '股票資訊',
-                        text = '請點選請查詢的股票資訊',
-                        actions = [
-                            MessageAction(
-                                label = 'xxx' + ' 平均股利',
-                                text = '平均股利 ' + 'xxx'
-                            ),
-                            MessageAction(
-                                label = 'xxx' + ' 歷年股利',
-                                text = '歷年股利' + 'xxx'
-                            )
-                        ]
-                    )
-                ]
-            )
+            contents = {
+                        {
+                            "type": "bubble",
+                            "hero": {
+                                "type": "image",
+                                "url": "https://miro.medium.com/max/1838/1*xRW05xCHmq7r8OOmFzlosw.png",
+                                "size": "full",
+                                "aspectRatio": "20:13",
+                                "aspectMode": "cover",
+                                "action": {
+                                "type": "uri",
+                                "uri": "http://linecorp.com/"
+                                }
+                            },
+                            "body": {
+                                "type": "box",
+                                "layout": "vertical",
+                                "contents": [
+                                {
+                                    "type": "text",
+                                    "text": "Brown Cafe",
+                                    "weight": "bold",
+                                    "size": "xl"
+                                },
+                                {
+                                    "type": "box",
+                                    "layout": "baseline",
+                                    "margin": "md",
+                                    "contents": [
+                                    {
+                                        "type": "icon",
+                                        "size": "sm",
+                                        "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
+                                    },
+                                    {
+                                        "type": "icon",
+                                        "size": "sm",
+                                        "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
+                                    },
+                                    {
+                                        "type": "icon",
+                                        "size": "sm",
+                                        "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
+                                    },
+                                    {
+                                        "type": "icon",
+                                        "size": "sm",
+                                        "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
+                                    },
+                                    {
+                                        "type": "icon",
+                                        "size": "sm",
+                                        "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gray_star_28.png"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "4.0",
+                                        "size": "sm",
+                                        "color": "#999999",
+                                        "margin": "md",
+                                        "flex": 0
+                                    }
+                                    ]
+                                },
+                                {
+                                    "type": "box",
+                                    "layout": "vertical",
+                                    "margin": "lg",
+                                    "spacing": "sm",
+                                    "contents": [
+                                    {
+                                        "type": "box",
+                                        "layout": "baseline",
+                                        "spacing": "sm",
+                                        "contents": [
+                                        {
+                                            "type": "text",
+                                            "text": "Place",
+                                            "color": "#aaaaaa",
+                                            "size": "sm",
+                                            "flex": 1
+                                        },
+                                        {
+                                            "type": "text",
+                                            "text": "Miraina Tower, 4-1-6 Shinjuku, Tokyo",
+                                            "wrap": true,
+                                            "color": "#666666",
+                                            "size": "sm",
+                                            "flex": 5
+                                        }
+                                        ]
+                                    },
+                                    {
+                                        "type": "box",
+                                        "layout": "baseline",
+                                        "spacing": "sm",
+                                        "contents": [
+                                        {
+                                            "type": "text",
+                                            "text": "Time",
+                                            "color": "#aaaaaa",
+                                            "size": "sm",
+                                            "flex": 1
+                                        },
+                                        {
+                                            "type": "text",
+                                            "text": "10:00 - 23:00",
+                                            "wrap": true,
+                                            "color": "#666666",
+                                            "size": "sm",
+                                            "flex": 5
+                                        }
+                                        ]
+                                    }
+                                    ]
+                                }
+                                ]
+                            },
+                            "footer": {
+                                "type": "box",
+                                "layout": "vertical",
+                                "spacing": "sm",
+                                "contents": [
+                                {
+                                    "type": "button",
+                                    "style": "link",
+                                    "height": "sm",
+                                    "action": {
+                                    "type": "uri",
+                                    "label": "CALL",
+                                    "uri": "https://linecorp.com"
+                                    }
+                                },
+                                {
+                                    "type": "button",
+                                    "style": "link",
+                                    "height": "sm",
+                                    "action": {
+                                    "type": "uri",
+                                    "label": "WEBSITE",
+                                    "uri": "https://linecorp.com"
+                                    }
+                                },
+                                {
+                                    "type": "box",
+                                    "layout": "vertical",
+                                    "contents": [],
+                                    "margin": "sm"
+                                }
+                                ],
+                                "flex": 0
+                            }
+                        }
+            }
         )
 
         #line_bot_api.reply_message(event.reply_token, TextSendMessage('Come in 002' + message))
