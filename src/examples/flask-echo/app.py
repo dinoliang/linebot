@@ -24,7 +24,7 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage, MessageAction, TemplateSendMessage, CarouselTemplate,  CarouselColumn,
+    MessageEvent, TextMessage, TextSendMessage, MessageAction, TemplateSendMessage, CarouselTemplate, CarouselColumn,
 )
 
 app = Flask(__name__)
@@ -81,16 +81,13 @@ def message_text(event):
             template = CarouselTemplate(
                 columns = [
                     CarouselColumn(
-                        thumbnail_image_url = 'https://miro.medium.com/max/1838/1*xRW05xCHmq7r8OOmFzlosw.png',
-                        title = message + '股票資訊',
-                        actions = [
+                        thumbnail_image_url='https://steam.oxxostudio.tw/download/python/line-template-message-demo2.jpg',
+                        title='選單 2',
+                        text='說明文字 2',
+                        actions=[
                             MessageAction(
-                                label = 'xxx' + ' 個股資訊',
-                                text = '個股資訊 ' + 'xxx'
-                            ),
-                            MessageAction(
-                                label = 'xxx' + ' 個股新聞',
-                                text = '個股新聞 ' + 'xxx'
+                                label='hi',
+                                text='hi'
                             )
                         ]
                     )
