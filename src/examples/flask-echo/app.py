@@ -24,7 +24,7 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage, MessageAction, TemplateSendMessage, CarouselTemplate, CarouselColumn,
+    MessageEvent, TextMessage, TextSendMessage, MessageAction, TemplateSendMessage, CarouselTemplate, CarouselColumn, FlexSendMessage,
 )
 
 app = Flask(__name__)
@@ -76,7 +76,7 @@ def message_text(event):
     if '股票' in message:
         #line_bot_api.reply_message(event.reply_token, TextSendMessage('Come in 001' + message))
 
-        buttons_template_message = TemplateSendMessage(
+        flex_message = FlexSendMessage(
             alt_text = '股票資訊',
             contents = {
                         {
