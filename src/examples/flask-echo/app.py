@@ -83,7 +83,7 @@ def message_text(event):
                     CarouselColumn(
                         thumbnail_image_url = 'https://miro.medium.com/max/1838/1*xRW05xCHmq7r8OOmFzlosw.png',
                         title = message + '股票資訊',
-                        text = message + '股票資訊',
+                        text = '請點選請查詢的股票資訊',
                         actions = [
                             MessageAction(
                                 label = 'xxx' + ' 個股資訊',
@@ -92,6 +92,36 @@ def message_text(event):
                             MessageAction(
                                 label = 'xxx' + ' 個股新聞',
                                 text = '個股新聞 ' + 'xxx'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url = 'https://miro.medium.com/max/1838/1*xRW05xCHmq7r8OOmFzlosw.png',
+                        title = message + '股票資訊',
+                        text = '請點選請查詢的股票資訊',
+                        actions = [
+                            MessageAction(
+                                label = 'xxx' + ' 最新分鐘圖',
+                                text = '最新分鐘圖 ' + 'xxx'
+                            ),
+                            MessageAction(
+                                label = 'xxx' + ' 日線圖',
+                                text = '日線圖 ' + 'xxx'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url = 'https://miro.medium.com/max/1838/1*xRW05xCHmq7r8OOmFzlosw.png',
+                        title = message + '股票資訊',
+                        text = '請點選請查詢的股票資訊',
+                        actions = [
+                            MessageAction(
+                                label = 'xxx' + ' 平均股利',
+                                text = '平均股利 ' + 'xxx'
+                            ),
+                            MessageAction(
+                                label = 'xxx' + ' 歷年股利',
+                                text = '歷年股利' + 'xxx'
                             )
                         ]
                     )
