@@ -79,7 +79,7 @@ def message_text(event):
             template = CarouselTemplate(
                 columns = [
                     CarouselColumn(
-                        #thumbnail_image_url = "",
+                        thumbnail_image_url = 'https://miro.medium.com/max/1838/1*xRW05xCHmq7r8OOmFzlosw.png',
                         title = message + '股票資訊',
                         actions = [
                             MessageAction(
