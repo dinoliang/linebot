@@ -81,13 +81,17 @@ def message_text(event):
             template = CarouselTemplate(
                 columns = [
                     CarouselColumn(
-                        thumbnail_image_url='https://steam.oxxostudio.tw/download/python/line-template-message-demo2.jpg',
-                        title='選單 2',
-                        text='說明文字 2',
-                        actions=[
+                        thumbnail_image_url = 'https://miro.medium.com/max/1838/1*xRW05xCHmq7r8OOmFzlosw.png',
+                        title = message + '股票資訊',
+                        text = message + '股票資訊',
+                        actions = [
                             MessageAction(
-                                label='hi',
-                                text='hi'
+                                label = 'xxx' + ' 個股資訊',
+                                text = '個股資訊 ' + 'xxx'
+                            ),
+                            MessageAction(
+                                label = 'xxx' + ' 個股新聞',
+                                text = '個股新聞 ' + 'xxx'
                             )
                         ]
                     )
