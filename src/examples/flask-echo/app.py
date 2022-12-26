@@ -162,6 +162,7 @@ def message_text(event):
                             {
                                 "type": "text",
                                 "text": "Miraina Tower, 4-1-6 Shinjuku, Tokyo",
+                                "wrap": True,
                                 "color": "#666666",
                                 "size": "sm",
                                 "flex": 5
@@ -183,6 +184,7 @@ def message_text(event):
                             {
                                 "type": "text",
                                 "text": "10:00 - 23:00",
+                                "wrap": True,
                                 "color": "#666666",
                                 "size": "sm",
                                 "flex": 5
