@@ -24,7 +24,7 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage, MessageAction, TemplateSendMessage, CarouselTemplate, CarouselColumn, quickReply, QuickReplyButton,
+    MessageEvent, TextMessage, TextSendMessage, MessageAction, TemplateSendMessage, CarouselTemplate, CarouselColumn, QuickReply, QuickReplyButton,
 )
 
 app = Flask(__name__)
@@ -135,7 +135,7 @@ def message_text(event):
     elif '大戶' in message:
         flex_message = TextSendMessage(
             text = '請選擇要顯示的資訊',
-            quick_reply = quickReply(
+            quick_reply = QuickReply(
                 items = [
                     QuickReplyButton(action=MessageAction(label='最近法人', text='最近法人買賣超')),
                     QuickReplyButton(action=MessageAction(label='歷年法人', text='歷年法人買賣超')),
