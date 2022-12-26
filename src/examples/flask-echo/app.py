@@ -142,7 +142,7 @@ def message_text(event):
                     QuickReplyButton(action=MessageAction(label='外資', text='外資買賣超')),
                     QuickReplyButton(action=MessageAction(label='投信', text='投信買賣超')),
                     QuickReplyButton(action=MessageAction(label='自營商', text='自營商買賣超')),
-                    QuickReplyButton(action=MessageAction(label='三大法人', text='三大法人買賣超')),
+                    QuickReplyButton(action=MessageAction(label='三大法人', text='三大法人買賣超'))
                 ]
             )
         )
