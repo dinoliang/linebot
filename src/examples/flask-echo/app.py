@@ -24,7 +24,7 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage, MessageAction, TemplateSendMessage, CarouselTemplate, CarouselColumn,
+    MessageEvent, TextMessage, TextSendMessage, MessageAction, TemplateSendMessage, CarouselTemplate, CarouselColumn, QuickReply, QuickReplyButton,
 )
 
 app = Flask(__name__)
@@ -132,6 +132,22 @@ def message_text(event):
         #line_bot_api.reply_message(event.reply_token, TextSendMessage('Come in 002' + message))
 
         line_bot_api.reply_message(event.reply_token, buttons_template_message)
+    elif '大戶' in message:
+        flex_message = TextSendMessage(
+            text = '請選擇要顯示的資訊',
+            quick_reply = QuickReply(
+                items = [
+                    QuickReplyButton(action=MessageAction(label='最近法人', text='最近法人買賣超')),
+                    QuickReplyButton(action=MessageAction(label='歷年法人', text='歷年法人買賣超')),
+                    QuickReplyButton(action=MessageAction(label='外資', text='外資買賣超')),
+                    QuickReplyButton(action=MessageAction(label='投信', text='投信買賣超')),
+                    QuickReplyButton(action=MessageAction(label='自營商', text='自營商買賣超')),
+                    QuickReplyButton(action=MessageAction(label='三大法人', text='三大法人買賣超')),
+                ]
+            )
+        )
+
+        line_bot_api.reply_message(event.reply_token, flex_message)
     else:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(message + '???'))
 
