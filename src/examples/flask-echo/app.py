@@ -27,6 +27,8 @@ from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage, MessageAction, TemplateSendMessage, CarouselTemplate, CarouselColumn, QuickReply, QuickReplyButton,
 )
 
+from googletrans import Translator # Google 翻譯模組
+
 app = Flask(__name__)
 
 # get channel_secret and channel_access_token from your environment variable
@@ -149,9 +151,36 @@ def message_text(event):
         )
 
         line_bot_api.reply_message(event.reply_token, flex_message)
+
+    elif '@翻英' in message or '@翻日' in message or '@翻中' in message:
+        if message[:3] == "@翻英":
+            content = translate_text(message[3:], "en")
+            message = TextSendMessage(text=content)
+            line_bot_api.reply_message(event.reply_token, message)
+        if message[:3] == "@翻日":
+            content = translate_text(message[3:] , "ja")
+            message = TextSendMessage(text=content)
+            line_bot_api.reply_message(event.reply_token, message)
+        if message[:3] == "@翻中":
+            content = translate_text(message[3:] , "zh-tw")
+            message = TextSendMessage(text=content)
+            line_bot_api.reply_message(event.reply_token, message)
     else:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(message + '???'))
+    
+    return
 
+
+#新增自訂translate_text()函數
+def translate_text(text, dest='en'):
+    """以google翻譯將text翻譯為目標語言
+
+    :param text: 要翻譯的字串，接受UTF-8編碼。
+    :param dest: 要翻譯的目標語言，參閱googletrans.LANGCODES語言列表。
+    """
+    translator = Translator()
+    result = translator.translate(text, dest).text
+    return result
 
 if __name__ == "__main__":
     arg_parser = ArgumentParser(
