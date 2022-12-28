@@ -151,8 +151,9 @@ def message_text(event):
         )
 
         line_bot_api.reply_message(event.reply_token, flex_message)
-    '''
+    
     elif '@翻英' in message or '@翻日' in message or '@翻中' in message:
+        '''
         if message[:3] == "@翻英":
             content = translate_text(message[3:], "en")
             message = TextSendMessage(text=content)
@@ -165,13 +166,14 @@ def message_text(event):
             content = translate_text(message[3:] , "zh-tw")
             message = TextSendMessage(text=content)
             line_bot_api.reply_message(event.reply_token, message)
-    '''
+        '''
+        pass
     else:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(message + '???'))
     
     return
 
-
+'''
 #新增自訂translate_text()函數
 def translate_text(text, dest='en'):
     """以google翻譯將text翻譯為目標語言
@@ -182,6 +184,7 @@ def translate_text(text, dest='en'):
     translator = Translator()
     result = translator.translate(text, dest).text
     return result
+'''
 
 if __name__ == "__main__":
     arg_parser = ArgumentParser(
