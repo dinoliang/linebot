@@ -27,7 +27,7 @@ from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage, MessageAction, TemplateSendMessage, CarouselTemplate, CarouselColumn, QuickReply, QuickReplyButton,
 )
 
-from googletrans import Translator # Google 翻譯模組
+#from googletrans import Translator # Google 翻譯模組
 
 app = Flask(__name__)
 
@@ -151,7 +151,7 @@ def message_text(event):
         )
 
         line_bot_api.reply_message(event.reply_token, flex_message)
-
+    '''
     elif '@翻英' in message or '@翻日' in message or '@翻中' in message:
         if message[:3] == "@翻英":
             content = translate_text(message[3:], "en")
@@ -165,6 +165,7 @@ def message_text(event):
             content = translate_text(message[3:] , "zh-tw")
             message = TextSendMessage(text=content)
             line_bot_api.reply_message(event.reply_token, message)
+    '''
     else:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(message + '???'))
     
