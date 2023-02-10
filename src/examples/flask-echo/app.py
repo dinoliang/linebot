@@ -170,17 +170,18 @@ def message_text(event):
         '''
         pass
 
-    elif  'AI' in message:
+    elif 'hi ai:' in message:
         openai.api_key = os.getenv("OpenAIKey")
         response = openai.Completion.create(
-            engine="text-davinci-003",  # ref: https://beta.openai.com/docs/models/gpt-3
-            prompt="講個笑話來聽聽",
+            engine="text-davinci-003",
+            prompt="msg[6:]",
             max_tokens=128,
-            temperature=0.5,    # 隨機文字組合，範圍 0～1，預設 0.5，0 表示不隨機，1 表示完全隨機。
+            temperature=0.5,
         )
 
         completed_text = response["choices"][0]["text"]
-        line_bot_api.reply_message(event.reply_token, completed_text)
+        text_message = TextSendMessage(text=completed_text)
+        line_bot_api.reply_message(event.reply_token, text_message)
         pass
     else:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(message + '???'))
