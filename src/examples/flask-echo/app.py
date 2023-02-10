@@ -174,7 +174,7 @@ def message_text(event):
         openai.api_key = os.getenv("OpenAIKey")
         response = openai.Completion.create(
             engine="text-davinci-003",
-            prompt="message[3:]",
+            prompt="你是誰?",
             temperature=0.5,
             max_tokens=500,
             top_p=1.0,
