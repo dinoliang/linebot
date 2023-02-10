@@ -177,7 +177,7 @@ def message_text(event):
             engine="text-davinci-003",
             prompt=message[3:],
             temperature=0.5,
-            max_tokens=120,
+            max_tokens=512,
             top_p=1.0,
             frequency_penalty=0.0,
             presence_penalty=0.0, 
