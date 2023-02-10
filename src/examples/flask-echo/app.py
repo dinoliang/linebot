@@ -184,7 +184,7 @@ def message_text(event):
         )
 
         completed_text = response["choices"][0]["text"].replace('\n','')
-        text_message = TextSendMessage(text=os.getenv("OpenAIKey"))
+        text_message = TextSendMessage(text=completed_text)
         line_bot_api.reply_message(event.reply_token, text_message)
 
         #line_bot_api.reply_message(event.reply_token, TextSendMessage(message[3:] + " & " + os.getenv("OpenAIKey")))
