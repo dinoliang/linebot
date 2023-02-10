@@ -175,7 +175,7 @@ def message_text(event):
         openai.api_key = os.getenv("OpenAIKey")
         response = openai.Completion.create(
             engine="text-davinci-003",
-            prompt="message[3:]",
+            prompt=message[3:],
             temperature=0.5,
             max_tokens=120,
             top_p=1.0,
@@ -183,7 +183,7 @@ def message_text(event):
             presence_penalty=0.0, 
         )
 
-        completed_text = response["choices"][0]["text"]#.replace('\n','')
+        completed_text = response["choices"][0]["text"].replace('\n','')
         text_message = TextSendMessage(text=os.getenv("OpenAIKey"))
         line_bot_api.reply_message(event.reply_token, text_message)
 
