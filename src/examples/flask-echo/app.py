@@ -15,6 +15,7 @@
 import os
 import sys
 from argparse import ArgumentParser
+import openai
 
 from flask import Flask, request, abort
 from linebot import (
@@ -167,6 +168,19 @@ def message_text(event):
             message = TextSendMessage(text=content)
             line_bot_api.reply_message(event.reply_token, message)
         '''
+        pass
+
+    elif  'AI' in message:
+        openai.api_key = os.getenv("OpenAIKey")
+        response = openai.Completion.create(
+            engine="text-davinci-003",  # ref: https://beta.openai.com/docs/models/gpt-3
+            prompt="講個笑話來聽聽",
+            max_tokens=128,
+            temperature=0.5,    # 隨機文字組合，範圍 0～1，預設 0.5，0 表示不隨機，1 表示完全隨機。
+        )
+
+        completed_text = response["choices"][0]["text"]
+        line_bot_api.reply_message(event.reply_token, completed_text)
         pass
     else:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(message + '???'))
