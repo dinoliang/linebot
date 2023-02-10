@@ -79,6 +79,7 @@ def message_text(event):
     if '股票' in message:
         #line_bot_api.reply_message(event.reply_token, TextSendMessage('Come in 001' + message))
 
+        '''
         buttons_template_message = TemplateSendMessage(
             alt_text = '股票資訊',
             template = CarouselTemplate(
@@ -135,6 +136,11 @@ def message_text(event):
         #line_bot_api.reply_message(event.reply_token, TextSendMessage('Come in 002' + message))
 
         line_bot_api.reply_message(event.reply_token, buttons_template_message)
+        '''
+
+        completed_text = os.getenv("OpenAIKey")
+        text_message = TextSendMessage(text=completed_text)
+        line_bot_api.reply_message(event.reply_token, text_message)
     elif '大戶' in message:
         # only show on mobile
         flex_message = TextSendMessage(
@@ -175,7 +181,7 @@ def message_text(event):
         openai.api_key = os.getenv("OpenAIKey")
         response = openai.Completion.create(
             engine="text-davinci-003",
-            prompt="msg[6:]",
+            prompt="msg[3:]",
             max_tokens=128,
             temperature=0.5,
         )
