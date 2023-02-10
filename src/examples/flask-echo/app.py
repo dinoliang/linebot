@@ -15,6 +15,7 @@
 import os
 import sys
 from argparse import ArgumentParser
+#from googletrans import Translator # Google 翻譯模組
 import openai
 
 from flask import Flask, request, abort
@@ -28,7 +29,7 @@ from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage, MessageAction, TemplateSendMessage, CarouselTemplate, CarouselColumn, QuickReply, QuickReplyButton,
 )
 
-#from googletrans import Translator # Google 翻譯模組
+
 
 app = Flask(__name__)
 
@@ -173,7 +174,7 @@ def message_text(event):
         openai.api_key = os.getenv("OpenAIKey")
         response = openai.Completion.create(
             engine="text-davinci-003",
-            prompt="msg[3:]",
+            prompt="message[3:]",
             temperature=0.5,
             max_tokens=500,
             top_p=1.0,
