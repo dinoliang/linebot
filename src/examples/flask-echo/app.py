@@ -170,20 +170,24 @@ def message_text(event):
         '''
         pass
 
-    elif 'ai:' in message:
+    elif 'Hi ai:' in message:
 
         openai.api_key = os.getenv("OpenAIKey")
         response = openai.Completion.create(
-            engine="text-davinci-003",
+            #engine="text-davinci-003",
+            model="text-davinci-003",
             prompt=message[3:],
             temperature=0.5,
-            max_tokens=512,
+            max_tokens=1024,
             top_p=1.0,
             frequency_penalty=0.0,
             presence_penalty=0.0, 
+            n=1,
+            stop=None,
+            #stop=["\n", "Human:", "AI:"]
         )
 
-        completed_text = response["choices"][0]["text"].replace('\n','')
+        completed_text = response["choices"][0]["text"].strip().replace('\n','')
         text_message = TextSendMessage(text=completed_text)
         line_bot_api.reply_message(event.reply_token, text_message)
 
