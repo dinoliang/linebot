@@ -176,7 +176,8 @@ def message_text(event):
         response = openai.Completion.create(
             #engine="text-davinci-003",
             model="text-davinci-003",
-            prompt=message[3:],
+            #prompt=message[6:],
+            prompt=message-'Hi ai:',
             temperature=0.5,
             max_tokens=1024,
             top_p=1.0,
